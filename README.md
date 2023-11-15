@@ -16,13 +16,16 @@ A tutorial on Jidi: [Tutorial](https://github.com/jidiai/ai_lib/blob/master/asse
 The competition uses an integrated version of [OvercookedAI games](https://github.com/HumanCompatibleAI/overcooked_ai)
 
 
-### OvercookedAI-Integrated
+### OvercookedAI-Integrated II
 <img src='https://jidi-images.oss-cn-beijing.aliyuncs.com/jidi/env103.gif' width=400>
 
 - The integrated game contains three official maps, they are： 
   1. Cramped Room Tomato; 
   2. Forced Coordination Tomato; 
   3. Soup Coordination
+  
+  Config details can be found in [layouts](.env/layouts)
+
 - The game proceed by putting both agents sequentially in these three maps and ask them to prepare orders by cooperating with the other player. The ending state in a map is followed by an initial state in the next map and the agent observation will be marked *new_map=True*
 - Each map will be run twice with agent index switched. For example in map one, player one controls agent one and player two controls agent two and they switch position and re-start the map when reaching an end. Thus, two players will play on three maps for six rounds in total.
 - Each map last for 400 timesteps. The total episode length of the integrated game is 2400.

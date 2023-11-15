@@ -208,7 +208,7 @@ class OvercookedAI_Integrated(Game, DictObservation):
             # self.current_state = [next_state for _ in range(self.n_player)]
             self.all_observes = self.get_all_observes()
 
-
+        # recipe_config = self.env.mdp.recipe_config        #config for food cooking time and value
         self.set_n_return(reward)
         self.step_cnt += 1
         done = self.is_terminal()
