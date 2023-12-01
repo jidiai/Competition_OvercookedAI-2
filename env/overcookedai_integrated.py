@@ -1,8 +1,7 @@
 # -*- coding:utf-8  -*-
 
 import copy
-import random
-import time
+import sys
 
 from env.simulators.game import Game
 from env.obs_interfaces.observation import *
@@ -122,6 +121,7 @@ class OvercookedAI_Integrated(Game, DictObservation):
             self.vis = StateVisualizer()
             self.window_size = (500, 500)
             self.background = pygame.display.set_mode(self.window_size)
+            self.clock = pygame.time.Clock()
 
     def reset_map(self):
 
@@ -379,7 +379,8 @@ class OvercookedAI_Integrated(Game, DictObservation):
         self.background.blit(surf, text)
 
         pygame.display.flip()
-        time.sleep(0.01)
+        self._parse_pygame_event()
+        self.clock.tick(60)
 
     def render(self):
         if self.render_mode == 'console':
@@ -388,3 +389,8 @@ class OvercookedAI_Integrated(Game, DictObservation):
             self.render_in_window()
         else:
             raise NotImplementedError('Render mode not implemented')
+
+    def _parse_pygame_event(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit(1)
